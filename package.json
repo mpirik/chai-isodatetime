@@ -1,0 +1,56 @@
+{
+  "name": "chai-isodatetime",
+  "version": "1.0.0",
+  "description": "Plugin for Chai to use .toISODate() for date comparisons",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint --fix --ext .ts src",
+    "dist": "if [ -d \"src\" ]; then rm -rf dist && npm run build && npm run lint && npm run test && cp package.json dist && cp *.md dist && cp LICENSE dist && cp .npmignore dist && cd dist && npm publish; fi",
+    "prepublishOnly": "if [ -d \"src\" ]; then echo \"Please use: npm run dist\" && exit 125; fi"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix"
+    ],
+    "*.ts": [
+      "eslint --fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mpirik/chai-isodatetime.git"
+  },
+  "keywords": [
+    "chai",
+    "datetime"
+  ],
+  "author": "Jim Geurts <jim@biacreations.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/chai": "^4.2.8",
+    "@typescript-eslint/eslint-plugin": "2.18.0",
+    "@typescript-eslint/parser": "2.18.0",
+    "chai": "4.2.0",
+    "eslint": "6.8.0",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-plugin-import": "2.20.0",
+    "eslint-plugin-jsdoc": "21.0.0",
+    "eslint-plugin-mocha": "6.2.2",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-security": "1.4.0",
+    "husky": "3.1.0",
+    "lint-staged": "9.5.0",
+    "typescript": "3.7.5"
+  }
+}
